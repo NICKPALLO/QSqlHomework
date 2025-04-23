@@ -108,7 +108,26 @@ void MainWindow::on_pb_request_clicked()
 void MainWindow::ScreenDataFromDB(QTableView* widget, int typeRequest)
 {
     tbView = widget;
-    ui->TableWid->layout( )->addWidget(tbView);
+    if (typeRequest == requestAllFilms)
+    {
+        tbView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        for (int i=0;i<14;++i)
+        {
+            if(i == 1 || i == 2)
+            {
+                continue;
+            }
+            else
+            {
+                tbView->hideColumn(i);
+            }
+        }
+    }
+    else
+    {
+        tbView->showColumn(0);
+    }
+    ui->TableWid->layout()->addWidget(tbView);
 }
 /*!
  * \brief Метод изменяет стотояние формы в зависимости от статуса подключения к БД

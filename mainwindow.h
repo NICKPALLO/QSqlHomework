@@ -5,7 +5,6 @@
 #include <QMessageBox>
 #include <QtConcurrent>
 #include "database.h"
-//#include "dbdata.h"
 #include "widget.h"
 
 
@@ -49,11 +48,11 @@ private:
     DataBase* dataBase;
     QMessageBox* msg;
     QTableView* tbView = nullptr;
-    QString comedyRequest = "SELECT title, description, c.name FROM film f "
+    QString comedyRequest = "SELECT title, description FROM film f "
                       "JOIN film_category fc on f.film_id = fc.film_id "
                       "JOIN category c on c.category_id = fc.category_id "
                       "WHERE c.name = 'Comedy'";
-    QString horrorRequest = "SELECT title, description, c.name FROM film f "
+    QString horrorRequest = "SELECT title, description FROM film f "
                             "JOIN film_category fc on f.film_id = fc.film_id "
                             "JOIN category c on c.category_id = fc.category_id "
                             "WHERE c.name = 'Horror'";
